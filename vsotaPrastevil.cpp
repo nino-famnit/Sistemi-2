@@ -25,7 +25,6 @@ int main() {
     
     long long vsota = 2;
     
-    vector<thread> 
     clock_t prej = clock(); 
 
     for (int i=3; i <= n; i += 2) {
