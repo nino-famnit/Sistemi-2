@@ -22,17 +22,19 @@ public class Cipher
 {
 
     // https://en.wikipedia.org/wiki/Letter_frequency
+    public static String nasTekstOld = "zdkfmuthirxocpsbeyanglqwvj";
+    
     public static String poVrsti =  "etaoinshrdlcumwfgypbvkjxqz";
-    public static String nasTekst = "zdkfmuthirxocpsbeyanglqwvj";
+    public static String nasTekst = "dkzuthmfixyeobprcanslgqwvj";
 
-    public static void main(String[] args) throws FileNotFoundException, IOException
+    public static void analiza(String[] args) throws FileNotFoundException, IOException
     {
         String text = "";
         BufferedReader bf = new BufferedReader(new FileReader("cipher.txt"));
         while (true) {
             String vrstica = bf.readLine();
             if (vrstica == null) break;
-            text += vrstica;
+            text += vrstica + '\n';
         }
         
         Map<Character, Integer> freq = new HashMap<Character, Integer>();
@@ -67,5 +69,31 @@ public class Cipher
         }
         
     }
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException
+    {
+        String text = "";
+        BufferedReader bf = new BufferedReader(new FileReader("cipher.txt"));
+        while (true) {
+            String vrstica = bf.readLine();
+            if (vrstica == null) break;
+            text += vrstica + '\n';
+        }
+        
+        String odkodirano = "";
+        for (int i=0; i<text.length(); i++) {
+            char c = text.charAt(i);
+            if (Character.isAlphabetic(c)) {
+                odkodirano += poVrsti.charAt(nasTekst.indexOf(c));
+            }
+            else {
+                odkodirano += c;
+            }
+        }
+        
+        System.out.println(odkodirano);
+          
+    }
 
 }
+
